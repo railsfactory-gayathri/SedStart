@@ -1,0 +1,20 @@
+name: Sedstart Prod
+ 
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '*/5 * * * *'
+ 
+jobs:
+  sedstart-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Sedstart test run
+        uses: sedinqa/sedstart@v1
+        with:
+          api_key: ${{ secrets.SEDSTART_API_KEY_PROD }}
+          project_id: 1268
+          test_id: 12934
+          profile_id: 2291
+          browser: chrome
+          headless: false
